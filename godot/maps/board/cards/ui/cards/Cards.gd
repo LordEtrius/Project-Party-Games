@@ -13,6 +13,12 @@ var _tweener: Tween
 @onready var _arc := $Arc as Path2D
 
 
+func disable_drag():
+	for follow_path in _arc.get_children():
+		var card_ui = follow_path.get_child(0) as CardUI
+		card_ui.draggable = false
+
+
 func reset():
 	_cards = []
 	Util.delete_children(_arc)

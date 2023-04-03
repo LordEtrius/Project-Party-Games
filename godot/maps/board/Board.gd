@@ -1,14 +1,19 @@
 extends Node2D
 class_name Board
 
+@export_group("Game")
 @export var max_round: int = 12
+
+@export_group("Discard")
+@export var max_cards_per_round: int = 5
+@export var points_gained_per_discard: int = 1
 
 @onready var Title = $UI/Screen/Title
 @onready var ScoreUI := $UI/Screen/ScoreUI
 
 @onready var PlanningUI := $UI/Screen/Phases/Planning
 @onready var PlayUI := $UI/Screen/Phases/Play
-@onready var DiscardUI := $UI/Screen/Phases/DiscardUI
+@onready var _discard_ui := $UI/Screen/Phases/DiscardUI
 @onready var graph := $Graph
 @onready var players := _get_players()
 
@@ -88,12 +93,14 @@ func post_turn(player: BoardPlayer) -> void:
 
 
 func discard_phase(player: BoardPlayer) -> void:
-	if player.deck.deck.size() > 5:
-		DiscardUI.deck = player.deck
-		DiscardUI.show()
-		await DiscardUI.discarded
-		DiscardUI.hide()
-		DiscardUI.deck = null
+	if player.deck.deck.size() > max_cards_per_round:
+		_discard_ui.player = player
+		_discard_ui.max_cards = max_cards_per_round
+		_discard_ui.points_gained_per_discard = points_gained_per_discard
+		_discard_ui.show()
+		await _discard_ui.discarded
+		_discard_ui.hide()
+		_discard_ui.player = null
 
 
 func game_round(players: Array[BoardPlayer]) -> void:
