@@ -6,12 +6,12 @@ signal removed_from_deck(card, idx)
 signal added_to_hand(card, idx)
 signal removed_from_hand(card, idx)
 
-var deck := []
-var hand := [null, null, null, null, null]
+var deck: Array[Card] = []
+var hand: Array[Card] = [null, null, null, null, null]
 
 
-func get_hand() -> Array:
-	var result := []
+func get_hand() -> Array[Card]:
+	var result: Array[Card] = []
 	for hand_card in hand:
 		if hand_card != null:
 			result.append(hand_card)

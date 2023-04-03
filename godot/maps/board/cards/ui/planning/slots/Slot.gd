@@ -1,6 +1,6 @@
 @tool
-extends Control
 class_name Slot
+extends Control
 
 signal removed_card(card)  # removed card
 signal added_card(card, idx)  # added card on index idx
@@ -32,7 +32,9 @@ func _get_drag_data(_position):
 	data["card"] = slot_card
 	data["from"] = self
 
-	var control := DraggableCard.create_dragged_card(SlotCard.texture)
+	var control := preload("res://maps/board/cards/ui/CardUI.tscn").instantiate()
+	control.set_card(slot_card)
+	control = control.get_control_preview()
 	set_drag_preview(control)
 
 	return data
@@ -44,9 +46,9 @@ func _can_drop_data(_position, data):
 
 func _drop_data(_position, data):
 	if "from" in data and data.from != null:
-		var FromSlot = data.from
-		FromSlot.slot_card = self.slot_card
-		emit_signal("changed_order", FromSlot.number, number)
+		var from_slot = data.from as Slot
+		from_slot.slot_card = self.slot_card
+		emit_signal("changed_order", from_slot.number, number)
 	elif self.slot_card != null:
 		emit_signal("changed_card", self.slot_card, data.card, number)
 	else:

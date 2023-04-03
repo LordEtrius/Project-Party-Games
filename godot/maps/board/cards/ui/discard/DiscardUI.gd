@@ -2,21 +2,20 @@ extends Control
 
 signal discarded
 
-@onready var Cards := $Cards
-@onready var Garbage := $Garbage
-@onready var DiscardLabel := $Label
-
 var deck = null : set = set_deck
 
+@onready var _cards := $Cards
+@onready var _garbage := $Garbage
+@onready var _discard_label := $Label
 
 func set_deck(new_deck):
-	Cards.reset()
+	_cards.reset()
 	if new_deck != null:
 		new_deck.connect("removed_from_deck",Callable(self,"_on_Deck_removed_from_deck"))
-		if DiscardLabel != null:
-			DiscardLabel.text = "Please discard %s card(s)" % str(new_deck.deck.size() - 5)
-		if Cards != null:
-			Cards.add_cards_to_ui(new_deck.deck)
+		if _discard_label != null:
+			_discard_label.text = "Please discard %s card(s)" % str(new_deck.deck.size() - 5)
+		if _cards != null:
+			_cards.add_cards_to_ui(new_deck.deck)
 	if deck != null:
 		deck.disconnect("removed_from_deck",Callable(self,"_on_Deck_removed_from_deck"))
 	deck = new_deck
@@ -24,7 +23,7 @@ func set_deck(new_deck):
 
 func _ready():
 	set_deck(deck)
-	Garbage.connect("discarded",Callable(self,"_on_Garbage_discarded"))
+	_garbage.connect("discarded",Callable(self,"_on_Garbage_discarded"))
 
 
 func _on_Garbage_discarded(card):
@@ -32,7 +31,7 @@ func _on_Garbage_discarded(card):
 
 
 func _on_Deck_removed_from_deck(_card: Card, idx: int):
-	Util.delete_child(Cards, idx)
-	await Garbage.animate()
+	_cards.remove_card(idx)
+	await _garbage.animate()
 	if deck.deck.size() <= 5:
 		emit_signal("discarded")

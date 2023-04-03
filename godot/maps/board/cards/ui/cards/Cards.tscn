@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://btoqa57t4ha5c"]
 
-[ext_resource path="res://maps/board/cards/ui/cards/Cards.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://maps/board/cards/ui/cards/Cards.gd" id="1"]
 
-[node name="Cards" type="HBoxContainer"]
-anchor_top = 1.0
+[sub_resource type="Curve2D" id="Curve2D_r5pd6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 34, 66.7736, -288.209, -0.0235586, 288.209, 0.0235586, 442, 38.1445, 0, 0, 0, 0, 842, 66.7736)
+}
+point_count = 3
+
+[node name="Cards" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -149.0
-offset_right = -6.0
-custom_constants/separation = 20
-alignment = 1
-script = ExtResource( 1 )
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+script = ExtResource("1")
+
+[node name="Arc" type="Path2D" parent="."]
+position = Vector2(134, 548.226)
+curve = SubResource("Curve2D_r5pd6")

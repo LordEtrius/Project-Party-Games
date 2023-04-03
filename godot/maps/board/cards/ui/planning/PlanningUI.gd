@@ -3,7 +3,7 @@ extends Control
 signal pressed_play
 
 @onready var Slots := $Turn/Control/Slots
-@onready var Cards := $Cards
+@onready var _cards := $Cards
 @onready var PlayButton := $Turn/Control/PlayButton
 
 var deck = null : set = set_deck
@@ -22,16 +22,16 @@ func set_deck(new_deck):
 		new_deck.connect("removed_from_deck",Callable(self,"_on_Deck_removed_from_deck"))
 		new_deck.connect("added_to_hand",Callable(self,"_on_Deck_added_to_hand"))
 		new_deck.connect("removed_from_hand",Callable(self,"_on_Deck_removed_from_hand"))
-		if Cards != null:
-			Cards.add_cards_to_ui(new_deck.deck)
+		if _cards != null:
+			_cards.add_cards_to_ui(new_deck.deck)
 	deck = new_deck
 
 
 # this functions tells how the UI is reseted
 func reset():
 	# remove all cards from deck
-	if Cards != null:
-		Cards.reset()
+	if _cards != null:
+		_cards.reset()
 
 	# reset all hand slots
 	for slot in Slots.get_children():
@@ -69,11 +69,11 @@ func _on_Play_pressed():
 
 
 func _on_Deck_added_to_deck(card: Card, _idx: int):
-	Cards.add_card_to_ui(card)
+	_cards.add_card_to_ui(card)
 
 
 func _on_Deck_removed_from_deck(_card: Card, idx: int):
-	Util.delete_child(Cards, idx)
+	_cards.remove_card(idx)
 
 
 func _on_Deck_added_to_hand(_card: Card, _idx: int):

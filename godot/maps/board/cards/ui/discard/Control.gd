@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal discarded(card)
 
+var _tweener: Tween
 
 func _can_drop_data(_position, data):
 	if "card" in data:
@@ -14,11 +15,16 @@ func _drop_data(_position, data):
 
 
 func animate():
-	var tweener := create_tween().set_trans(Tween.TRANS_LINEAR)
-	tweener.tween_property(
-		self, "scale", scale * 1.25, 0.5
+	if _tweener != null and _tweener.is_running():
+		_tweener.kill()
+	
+	_tweener = create_tween().set_trans(Tween.TRANS_SINE)
+	
+	var base_scale = scale
+	_tweener.tween_property(
+		self, "scale", base_scale * 1.25, 0.5
 	)
-	tweener.tween_property(
-		self, "scale", scale / 1.25, 0.5
+	_tweener.tween_property(
+		self, "scale", base_scale, 0.5
 	)
-	await tweener.finished
+	await _tweener.finished
