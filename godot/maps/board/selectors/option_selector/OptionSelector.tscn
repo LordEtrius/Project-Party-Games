@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8cs8p44yjxuw"]
+
+[ext_resource type="Script" path="res://maps/board/selectors/option_selector/OptionSelector.gd" id="1_pywh6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hg8e5"]
+bg_color = Color(0, 0, 0, 0.3)
+
+[node name="OptionSelector" type="CanvasLayer"]
+script = ExtResource("1_pywh6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -51.0
+offset_right = 148.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hg8e5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select an option"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Take 25% of the next player's health"
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Take 25% of next player's life"
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Take 25% of next player's life"

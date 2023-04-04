@@ -95,7 +95,6 @@ func _on_mouse_entered():
 
 
 func _animate_mouse_entered():
-	self.z_index = 1
 	_update_tweener()
 	_animate_active()
 	_tweener.parallel()
@@ -103,6 +102,7 @@ func _animate_mouse_entered():
 
 
 func _animate_active():
+	self.z_index = 1
 	_update_tweener()
 	_tweener.tween_property(self, "position", _base_position + Vector2(0, -50), animation_time)
 	_tweener.parallel()
@@ -114,7 +114,6 @@ func _on_mouse_exited():
 	
 
 func _animate_mouse_exited():
-	self.z_index = 0
 	_update_tweener()
 	_animate_restore()
 	_tweener.parallel()
@@ -122,6 +121,7 @@ func _animate_mouse_exited():
 
 
 func _animate_restore():
+	self.z_index = 0
 	_update_tweener()
 	_tweener.tween_property(self, "position", _base_position, animation_time)
 	_tweener.parallel()

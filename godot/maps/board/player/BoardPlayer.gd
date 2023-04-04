@@ -124,6 +124,15 @@ func select_item(items: Array) -> Node2D:
 	return item
 
 
+func select_option(options: Array) -> int:
+	var option_selector = preload("res://maps/board/selectors/option_selector/OptionSelector.tscn").instantiate()
+	option_selector.options = options
+	_selectors.add_child(option_selector)
+	var idx = await option_selector.option_selected
+	option_selector.queue_free()
+	return idx
+
+
 func _ready():
 	$Nick.text = nick
 

@@ -27,4 +27,5 @@ func effect(board: Board, player: BoardPlayer):
 
 func _ready():
 	super._ready()
-	PortalController.add_portal(self)
+	if not Engine.is_editor_hint():
+		PortalController.add_portal(self)
