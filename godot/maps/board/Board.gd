@@ -121,4 +121,5 @@ func _ready():
 	setup_game(players)
 	for round_i in max_round:
 		BoardEvent.emit_signal("round_started", round_i, max_round)
+		BoardEvent.emit_signal("special_block", randi())
 		await game_round(players)

@@ -6,3 +6,4 @@ signal turn_ended
 
 signal entered_selection
 signal finished_selection
+signal special_block(random_number: int)

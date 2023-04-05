@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca1t1qqkyjqkd"]
+
+[ext_resource type="PackedScene" uid="uid://daxpv2fp785mf" path="res://maps/board/tile/Tile.tscn" id="1_ewrp8"]
+[ext_resource type="Script" path="res://maps/board/tile/instances/special/Special.gd" id="2_7lf3a"]
+
+[node name="Tile" instance=ExtResource("1_ewrp8")]
+script = ExtResource("2_7lf3a")
+teleportable = true
