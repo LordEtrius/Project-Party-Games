@@ -1,7 +1,7 @@
 @tool
 extends Tile
 
-var _options := [PrisonerAction]
+var _options := [PrisonerAction, Test1, Test2]
 var _current_option: SpecialAction = null
 
 @onready var _sprite := $Sprite2D

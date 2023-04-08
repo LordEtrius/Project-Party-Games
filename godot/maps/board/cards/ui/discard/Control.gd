@@ -20,7 +20,7 @@ func animate():
 	
 	_tweener = create_tween().set_trans(Tween.TRANS_SINE)
 	
-	var base_scale = scale
+	var base_scale = Vector2.ONE
 	_tweener.tween_property(
 		self, "scale", base_scale * 1.25, 0.5
 	)

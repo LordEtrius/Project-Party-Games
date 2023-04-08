@@ -23,16 +23,16 @@ func deactivate() -> void:
 func get_input() -> Vector2:
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("ui_right"):
-		if _node.position.x < limit_right:
+		if _node.global_position.x < limit_right:
 			velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
-		if _node.position.x > limit_left:
+		if _node.global_position.x > limit_left:
 			velocity.x -= 1
 	if Input.is_action_pressed("ui_down"):
-		if _node.position.y < limit_bottom:
+		if _node.global_position.y < limit_bottom:
 			velocity.y += 1
 	if Input.is_action_pressed("ui_up"):
-		if _node.position.y > limit_top:
+		if _node.global_position.y > limit_top:
 			velocity.y -= 1
 	return velocity.normalized() * speed
 

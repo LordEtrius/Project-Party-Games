@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://daxpv2fp785mf" path="res://maps/board/tile/Tile.tscn" id="1_rsejm"]
 [ext_resource type="Script" path="res://maps/board/tile/instances/ownership/Ownership.gd" id="2_dijjs"]
-[ext_resource type="Texture2D" path="res://assets/tiles/icon_ownership.png" id="3_omrv1"]
+[ext_resource type="Texture2D" uid="uid://ddmcxrxkknew5" path="res://assets/tiles/icon_ownership.png" id="3_omrv1"]
 
 [node name="Tile" instance=ExtResource("1_rsejm")]
 script = ExtResource("2_dijjs")
