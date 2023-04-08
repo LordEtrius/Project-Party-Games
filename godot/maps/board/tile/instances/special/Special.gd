@@ -13,7 +13,7 @@ func effect(_board: Board, _player: BoardPlayer):
 
 func _ready():
 	super._ready()
-	BoardEvent.special_block.connect(_on_round_started)
+	BoardEvent.connect("special_block", _on_round_started)
 
 
 func _on_round_started(random_number: int):

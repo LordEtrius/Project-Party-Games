@@ -33,6 +33,7 @@ func add_card_to_ui(card: Card):
 	_cards.append(card)
 	var card_ui := _create_card_ui(card)
 	await _add_to_arc(card_ui, _cards.size() - 1)
+	SoundFx.card_out02_hand()
 
 
 func remove_card(idx: int) -> void:

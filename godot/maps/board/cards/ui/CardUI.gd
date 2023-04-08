@@ -9,7 +9,8 @@ const ASPECT :=  300. / 200.
 var _tweener: Tween
 var _base_position: Vector2 = Vector2.ZERO
 var card = null : set = set_card
-var animation_time = 0.2
+var animation_time = 0.25
+var sfx_player = AudioStreamPlayer.new()
 
 @onready var _title = $Title
 @onready var _description = $Inside/Info/Description
@@ -17,6 +18,8 @@ var animation_time = 0.2
 @onready var _draggable_component := $Draggable as DraggableComponent
 @onready var _card_image = $Inside/Image
 @onready var _card_info = $Inside/Info
+@onready var audio_file = "res://assets/cards/audio/hover_click01.wav"
+
 
 
 func set_draggable(new_draggable: bool):
@@ -107,7 +110,10 @@ func _animate_active():
 	_tweener.tween_property(self, "position", _base_position + Vector2(0, -50), animation_time)
 	_tweener.parallel()
 	_tweener.tween_property(self, "scale", Vector2.ONE * 1.25, animation_time)
-
+	SoundFx.hover_click_hand()
+	
+	
+	
 
 func _on_mouse_exited():
 	_animate_mouse_exited()
