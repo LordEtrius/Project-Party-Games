@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://sw4kkb6awdpd"]
+[gd_scene load_steps=82 format=3 uid="uid://sw4kkb6awdpd"]
 
 [ext_resource type="Script" path="res://maps/board/Board.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dgdrejtl43pxo" path="res://maps/board/tile/instances/pink/PinkTile.tscn" id="2"]
@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://dxkmenf7va4sb" path="res://maps/board/ui/camera/TransitionCamera.tscn" id="17"]
 [ext_resource type="Script" path="res://maps/board/Phases.gd" id="18"]
 [ext_resource type="PackedScene" path="res://maps/board/ui/round/Round.tscn" id="19"]
-[ext_resource type="Script" path="res://maps/board/tile/path/Path.gd" id="20_ve28d"]
 [ext_resource type="Script" path="res://maps/board/graph/Graph.gd" id="22"]
 [ext_resource type="PackedScene" uid="uid://bpyxo2iugbxnc" path="res://maps/board/tile/instances/mixed/Mixed.tscn" id="22_ebtdl"]
 [ext_resource type="Script" path="res://maps/board/tile/instances/green/GreenTile.gd" id="22_k6kns"]
@@ -971,9 +970,8 @@ curve = SubResource("Curve2D_di5cp")
 [node name="IceArea_Tile26-IceArea_Tile07" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_8yffo")
 
-[node name="IceArea_Tile03-IceArea_Tile04" type="Path2D" parent="Graph/Paths" instance=ExtResource("25")]
+[node name="IceArea_Tile03-IceArea_Tile04" parent="Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_ry7r8")
-script = ExtResource("20_ve28d")
 
 [node name="Tiles" type="Node2D" parent="Graph"]
 script = ExtResource("5")

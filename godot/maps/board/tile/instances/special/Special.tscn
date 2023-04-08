@@ -6,3 +6,5 @@
 [node name="Tile" instance=ExtResource("1_ewrp8")]
 script = ExtResource("2_7lf3a")
 teleportable = true
+
+[node name="UI" type="CanvasLayer" parent="." index="3"]

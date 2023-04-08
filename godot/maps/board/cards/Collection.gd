@@ -15,7 +15,7 @@ var cards = {
 #		legendary = [Dice],
 #	},
 	any = {
-		basic = [Dice],
+		basic = [TeleportToTile],
 		rare = [Teleport, SubPoint, Damage],
 		broken = [WhereAmI, Suicide],
 		legendary = [TeleportToTile, Swap],

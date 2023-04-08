@@ -1,26 +1,14 @@
 @tool
 extends Tile
 
-var _options := [
-	{
-		"sprite": preload("res://assets/tiles/icon_special1.png"),
-		"effect": func(_board: Board, player: BoardPlayer): player.score.sub_points += 1,
-	},
-	{
-		"sprite": preload("res://assets/tiles/icon_special2.png"),
-		"effect": func(_board: Board, player: BoardPlayer): player.score.sub_points += 2,
-	},
-	{
-		"sprite": preload("res://assets/tiles/icon_special3.png"),
-		"effect": func(_board: Board, player: BoardPlayer): player.score.sub_points += 3,
-	},
-]
-var _current_option := 0
+var _options := [PrisonerAction]
+var _current_option: SpecialAction = null
 
 @onready var _sprite := $Sprite2D
+@onready var _ui := $UI
 
 func effect(_board: Board, _player: BoardPlayer):
-	_options[_current_option].effect.call(_board, _player)
+	await _current_option.effect(_board, _player, _ui)
 
 
 func _ready():
@@ -34,12 +22,12 @@ func _on_round_started(random_number: int):
 
 
 func _choose_option(random_number):
-	var drawn_option = random_number % _options.size()
-	if drawn_option == _current_option:
+	var drawn_option := random_number % _options.size() as int
+	if _options[drawn_option] == _current_option:
 		drawn_option = (drawn_option + 1) % _options.size()
-	_current_option = drawn_option
+	_current_option = _options[drawn_option].new()
 
 
 func _change_sprite():
-	_sprite.texture = _options[_current_option].sprite
+	_sprite.texture = _current_option.sprite
 	_sprite.scale = Vector2.ONE * 0.313

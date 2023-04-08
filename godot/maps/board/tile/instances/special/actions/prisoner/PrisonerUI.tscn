@@ -1,0 +1,124 @@
+[gd_scene load_steps=3 format=3 uid="uid://4wo1wmdh4pso"]
+
+[ext_resource type="Texture2D" uid="uid://ht86w66wow0d" path="res://assets/chars/char2.png" id="1_oq13g"]
+[ext_resource type="Script" path="res://maps/board/tile/instances/special/actions/prisoner/PrisonerUI.gd" id="1_xpm3n"]
+
+[node name="PrisonerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xpm3n")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -165.0
+offset_right = 267.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prisoner Dillema Game"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Game" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Player1" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/Game"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player1"]
+layout_mode = 2
+text = "vasco
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player1"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player1/VBoxContainer"]
+layout_mode = 2
+text = "Press N to spare"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player1/VBoxContainer"]
+layout_mode = 2
+text = "Press M to take"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player1/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Player Choosed"
+horizontal_alignment = 1
+
+[node name="Image" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/Game"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Description" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Image"]
+layout_mode = 2
+text = "Both spare -> Both gain 10 jello coins
+Only one take -> Taker gain 80 jello coins
+Both take -> Nobody gains jello coins"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Image"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_oq13g")
+stretch_mode = 5
+
+[node name="Player2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/Game"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player2"]
+layout_mode = 2
+text = "vasco
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player2"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player2/VBoxContainer"]
+layout_mode = 2
+text = "Press H to spare"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player2/VBoxContainer"]
+layout_mode = 2
+text = "Press J to take"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/Game/Player2/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Player Choosed"
+horizontal_alignment = 1
