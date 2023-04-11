@@ -1,6 +1,9 @@
 @tool
 extends Tile
 
+const SELECTOR = preload("res://maps/board/selectors/option_selector/OptionSelector.tscn")
+const MAX_OPTIONS = 2
+
 var _owner_player: BoardPlayer = null : set = set_player_ownership
 var _ownership_options = [
 	{
@@ -33,6 +36,7 @@ func set_player_ownership(player: BoardPlayer) -> void:
 
 
 func effect(_board: Board, player: BoardPlayer) -> void:
+	# If the tile is owned by another player, the player who landed on it suffers the effect
 	if _owner_player and _owner_player != player:
 		_choosed_option.action.call(player)
 		TileEvent.emit_signal(
@@ -40,11 +44,17 @@ func effect(_board: Board, player: BoardPlayer) -> void:
 		)
 		await player.animate_rotation()
 	
+	# Get the ownership random options
 	_ownership_options.shuffle()
-	var _drawn_options = _ownership_options.slice(0, 2)
-	var idx = await player.select_option(_drawn_options)
-	_choosed_option = _drawn_options[idx]
+	var _drawn_options = _ownership_options.slice(0, MAX_OPTIONS)
 	
+	# Create the selector and wait for the player to choose an option
+	var selector = SELECTOR.instantiate() as OptionSelector
+	selector.options = _drawn_options
+	var idx := await player.select(selector) as int
+	
+	# Store the choosed option and set the ownership
+	_choosed_option = _drawn_options[idx]
 	_owner_player = player
 	await player.animate_scale()
 

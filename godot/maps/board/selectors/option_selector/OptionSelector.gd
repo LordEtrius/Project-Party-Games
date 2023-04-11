@@ -1,6 +1,7 @@
+class_name OptionSelector
 extends CanvasLayer
 
-signal option_selected(idx: int)
+signal selected(idx: int)
 
 var title := "Select an option"
 var options := [] : set = set_options
@@ -28,4 +29,4 @@ func _ready() -> void:
 
 
 func _on_option_selected(idx: int) -> void:
-	option_selected.emit(idx)
+	selected.emit(idx)

@@ -1,7 +1,7 @@
 class_name TileSelector
 extends CharacterBody2D
 
-signal tile_selected(tile: Tile)
+signal selected(tile: Tile)
 
 @onready var _area_selection := $Area2D as Area2D
 @onready var _camera := $BaseCamera
@@ -19,12 +19,12 @@ func _input(event):
 		var tile = areas[0].get_parent() as Tile
 		if not tile.teleportable:
 			return
-		emit_signal("tile_selected", tile)
-		BoardEvent.emit_signal("finished_selection")
+		selected.emit(tile)
+		BoardEvent.finished_selection.emit()
 
 
 func _ready():
-	BoardEvent.emit_signal("entered_selection")
+	BoardEvent.entered_selection.emit()
 	_movement.limit_right = _camera.limit_right
 	_movement.limit_left = _camera.limit_left
 	_movement.limit_bottom = _camera.limit_bottom

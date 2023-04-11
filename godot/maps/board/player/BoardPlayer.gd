@@ -105,32 +105,19 @@ func restore() -> void:
 	await animate_scale()
 
 
-func select_tile() -> Tile:
-	var tile_selector = preload("res://maps/board/selectors/tile_selector/TileSelector.tscn").instantiate() as TileSelector
-	_selectors.add_child(tile_selector)
-	await TransitionEvent.transition_from_to(self, tile_selector)
-	var tile = await tile_selector.tile_selected
-	await TransitionEvent.transition_from_to(tile_selector, self)
-	tile_selector.queue_free()
-	return tile
-
-
-func select_item(items: Array) -> Node2D:
-	var player_selector = preload("res://maps/board/selectors/item_selector/ItemSelector.tscn").instantiate().init(items)
-	_selectors.add_child(player_selector)
-	var item = await player_selector.item_selected
-	player_selector.queue_free()
-	await TransitionEvent.transition_to(self)
-	return item
-
-
-func select_option(options: Array) -> int:
-	var option_selector = preload("res://maps/board/selectors/option_selector/OptionSelector.tscn").instantiate()
-	option_selector.options = options
-	_selectors.add_child(option_selector)
-	var idx = await option_selector.option_selected
-	option_selector.queue_free()
-	return idx
+## This function is used to select anything
+## It receives a selector (TileSelector, ItemSelector, etc),
+## add it to the selectors node and wait for the selector
+## to emit the `selected` signal
+func select(selector, do_transition := false) -> Variant:
+	_selectors.add_child(selector)
+	if do_transition:
+		await TransitionEvent.transition_from_to(self, selector)
+	var result = await selector.selected
+	if do_transition:
+		await TransitionEvent.transition_to(self)
+	selector.queue_free()
+	return result
 
 
 func _ready():
