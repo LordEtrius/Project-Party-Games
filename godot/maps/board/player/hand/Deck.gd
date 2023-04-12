@@ -59,4 +59,7 @@ func pick_card(card: Card, hand_idx: int):
 			emit_signal("added_to_hand", card, hand_idx)
 			emit_signal("removed_from_deck", card, deck_idx)
 	SoundFx.card_in01_hand()
-	
+
+
+func clear_deck():
+	deck.clear()

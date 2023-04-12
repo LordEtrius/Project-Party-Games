@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2k76nviojyw8"]
+
+[ext_resource type="PackedScene" uid="uid://bvw8p3fw8okjs" path="res://maps/board/selectors/area_selector/AreaSelector.tscn" id="1_jlcvl"]
+[ext_resource type="Script" path="res://maps/board/selectors/area_selector/circle/CircleSelector.gd" id="2_dpx2w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxejf"]
+
+[node name="Area2D" instance=ExtResource("1_jlcvl")]
+script = ExtResource("2_dpx2w")
+radius = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_xxejf")

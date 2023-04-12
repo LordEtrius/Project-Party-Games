@@ -23,22 +23,23 @@ func add_directed_edge(from_tile: Tile, to_tile: Tile) -> void:
 		self.undirected_graph[from_tile].append(to_tile)
 
 
-func bfs(start_node: Tile, condition: Callable, directed_graph := false) -> Variant:
+func bfs(start_node: Tile, condition: Callable, max_distance := -1, directed_graph := false) -> Variant:
 	# TODO: decide which graph take
 	var graph = self.undirected_graph
 	var queue := []
-	var marked := {}
-
-	marked[start_node] = true
+	var info := {}
+	info[start_node] = {"distance": 0}
 	queue.append(start_node)
 
 	while not queue.is_empty():
 		var node = queue.pop_front()
+		if max_distance != -1 and info[node]["distance"] > max_distance:
+			return null
 		if condition.call(node):
 			return node
 		for neighbor in graph[node]:
-			if not neighbor in marked:
-				marked[neighbor] = true
+			if not neighbor in info:
+				info[neighbor] = {"distance": info[node]["distance"] + 1}
 				queue.append(neighbor)
 	return null
 
