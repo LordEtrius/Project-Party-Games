@@ -8,7 +8,7 @@ const RADIUS = 100
 
 func _init():
 	title = "Burner"
-	description = "Burns all your cards and deals 5 damage for each card burned to the closest player in 6 spaces"
+	description = "Burns all your cards and deals 5 damage for each card burned to the closest player in the area"
 
 
 func effect(_board: Board, player: BoardPlayer) -> void:
