@@ -53,15 +53,18 @@ func _on_Slot_removed_card(_card, hand_idx: int):
 
 func _on_Slot_added_card(card, hand_idx: int):
 	deck.pick_card(card, hand_idx)
+	SoundFx.card_in01_hand()
 
 
 func _on_Slot_changed_order(from_idx, to_idx):
 	deck.change_hand_order(from_idx, to_idx)
+	SoundFx.card_in02_hand()
 
 
 func _on_Slot_changed_card(_old_card, new_card, hand_idx):
 	deck.remove_card_from_hand(hand_idx)
 	deck.pick_card(new_card, hand_idx)
+	SoundFx.card_in01_hand()
 
 
 func _on_Play_pressed():

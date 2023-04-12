@@ -98,8 +98,12 @@ func _on_mouse_entered():
 
 
 func _animate_mouse_entered():
+	# Update tweener
 	_update_tweener()
+	# Animate card
 	_animate_active()
+	# Play sound
+	SoundFx.hover_click_hand()
 	_tweener.parallel()
 	_tweener.tween_property(_card_image, "modulate", Color(1, 1, 1, 0), animation_time)
 
@@ -110,10 +114,7 @@ func _animate_active():
 	_tweener.tween_property(self, "position", _base_position + Vector2(0, -50), animation_time)
 	_tweener.parallel()
 	_tweener.tween_property(self, "scale", Vector2.ONE * 1.25, animation_time)
-	SoundFx.hover_click_hand()
-	
-	
-	
+
 
 func _on_mouse_exited():
 	_animate_mouse_exited()

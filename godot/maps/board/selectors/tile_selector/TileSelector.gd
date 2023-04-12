@@ -29,4 +29,3 @@ func _ready():
 	_movement.limit_left = _camera.limit_left
 	_movement.limit_bottom = _camera.limit_bottom
 	_movement.limit_top = _camera.limit_top
-	print_debug(_movement.limit_right, _movement.limit_left, _movement.limit_top, _movement.limit_bottom)

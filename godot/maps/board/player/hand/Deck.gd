@@ -47,7 +47,6 @@ func change_hand_order(from_idx, to_idx):
 	var aux = hand[from_idx]
 	hand[from_idx] = hand[to_idx]
 	hand[to_idx] = aux
-	SoundFx.card_in02_hand()
 
 
 func pick_card(card: Card, hand_idx: int):
@@ -58,7 +57,7 @@ func pick_card(card: Card, hand_idx: int):
 			hand[hand_idx] = card
 			emit_signal("added_to_hand", card, hand_idx)
 			emit_signal("removed_from_deck", card, deck_idx)
-	SoundFx.card_in01_hand()
+
 
 
 func clear_deck():

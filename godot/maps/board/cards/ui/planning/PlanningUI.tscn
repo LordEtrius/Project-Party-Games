@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2brro8euj2k4"]
 
-[ext_resource type="PackedScene" uid="uid://b53q14vcejmfx" path="res://maps/board/cards/ui/planning/slots/CardSlotUI.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dk4l56pxu1qha" path="res://maps/board/cards/ui/planning/slots/CardSlotUI.tscn" id="1"]
 [ext_resource type="Script" path="res://maps/board/cards/ui/planning/PlanningUI.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://btoqa57t4ha5c" path="res://maps/board/cards/ui/cards/Cards.tscn" id="3"]
 
@@ -15,6 +15,7 @@ script = ExtResource("2")
 
 [node name="Cards" parent="." instance=ExtResource("3")]
 layout_mode = 1
+sound_active = true
 
 [node name="Turn" type="PanelContainer" parent="."]
 layout_mode = 0

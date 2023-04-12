@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://lgyd3boxpr0y"]
+
+[ext_resource type="Script" path="res://maps/board/global/Audio/SoundFx.gd" id="1_5e103"]
+[ext_resource type="AudioStream" uid="uid://cn3oju7qqp643" path="res://assets/cards/audio/hover_click01.wav" id="2_jcwxi"]
+[ext_resource type="AudioStream" uid="uid://x435g0kdrjne" path="res://assets/cards/audio/card_in01.wav" id="3_psl4q"]
+[ext_resource type="AudioStream" uid="uid://bq255wqssnxuf" path="res://assets/cards/audio/card_in02.wav" id="4_y0u6s"]
+[ext_resource type="AudioStream" uid="uid://d2dh5bussqh2h" path="res://assets/cards/audio/card_out01.wav" id="5_k6nla"]
+[ext_resource type="AudioStream" uid="uid://d3ie4gfhomi5f" path="res://assets/cards/audio/card_out02.wav" id="6_bu36n"]
+
+[node name="SoundFx" type="Node"]
+script = ExtResource("1_5e103")
+
+[node name="hover_click01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jcwxi")
+
+[node name="card_in01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_psl4q")
+
+[node name="card_in02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y0u6s")
+
+[node name="card_out01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_k6nla")
+
+[node name="card_out02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bu36n")

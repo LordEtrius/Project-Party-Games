@@ -24,7 +24,7 @@ CameraEvent="*res://maps/board/events/CameraEvent.gd"
 CardsCollection="*res://maps/board/cards/Collection.gd"
 PortalController="*res://maps/board/global/PortalController.gd"
 TransitionEvent="*res://maps/board/events/TranstitionEvent.gd"
-SoundFx="*res://maps/board/global/Audio/sound_fx.tscn"
+SoundFx="*res://maps/board/global/Audio/SoundFx.tscn"
 
 [display]
 
