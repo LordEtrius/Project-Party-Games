@@ -75,6 +75,7 @@ func planning_phase(player: BoardPlayer) -> void:
 	PlanningUI.show()
 	await PlanningUI.pressed_play
 	PlanningUI.hide()
+	PlanningUI.deck = null
 
 
 func turn(player: BoardPlayer) -> void:
