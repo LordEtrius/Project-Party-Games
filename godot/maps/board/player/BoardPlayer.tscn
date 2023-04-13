@@ -35,3 +35,6 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -25)
 shape = SubResource("RectangleShape2D_shvfp")
+
+[node name="Dice" type="Node2D" parent="."]
+position = Vector2(0, -104)

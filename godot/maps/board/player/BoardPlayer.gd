@@ -23,6 +23,7 @@ var graph = null
 @onready var _selectors: Node2D = $Selectors
 @onready var _char: Sprite2D = $Char
 @onready var _char_initial_scale = _char.scale
+@onready var dice: Node2D = $Dice
 
 func set_hp(new_hp: int) -> void:
 	if new_hp <= 0:
