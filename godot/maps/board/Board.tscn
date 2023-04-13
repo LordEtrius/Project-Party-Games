@@ -36,7 +36,7 @@
 [ext_resource type="Script" path="res://maps/board/tile/instances/pink/PinkTile.gd" id="25_0stgv"]
 [ext_resource type="Script" path="res://maps/board/tile/instances/red/RedTile.gd" id="26_awdc1"]
 [ext_resource type="PackedScene" uid="uid://c8yka42x2jt3" path="res://maps/board/tile/instances/portal/Portal.tscn" id="26_mcqvf"]
-[ext_resource type="PackedScene" path="res://maps/board/tile/arrow/Arrow.tscn" id="27_v0r1j"]
+[ext_resource type="PackedScene" uid="uid://bvi1xla2o1fde" path="res://maps/board/tile/arrow/Arrow.tscn" id="27_v0r1j"]
 [ext_resource type="PackedScene" uid="uid://xn50hhhm836u" path="res://maps/board/tile/instances/green/GreenTile.tscn" id="31_340a8"]
 [ext_resource type="PackedScene" uid="uid://cjdydmyrce4kl" path="res://maps/board/tile/instances/ownership/Ownership.tscn" id="34_822w5"]
 [ext_resource type="PackedScene" uid="uid://ca1t1qqkyjqkd" path="res://maps/board/tile/instances/special/Special.tscn" id="35_kghgx"]
@@ -841,6 +841,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Screen" type="CanvasLayer" parent="UI"]
+layer = 0
 
 [node name="Round" parent="UI/Screen" instance=ExtResource("19")]
 anchors_preset = 1
