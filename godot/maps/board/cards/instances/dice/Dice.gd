@@ -15,8 +15,12 @@ func roll_dice() -> int:
 
 
 func effect(board, player):
-	var number_of_tiles = roll_dice()
+	#var number_of_tiles = roll_dice()
 	# TODO: move text to function
+	var dice_roll = preload("res://maps/board/cards/instances/dice/action/dice_roll.tscn").instantiate()
+	player.dice.add_child(dice_roll)
+	var number_of_tiles = await dice_roll.rolled_dice
+	dice_roll.queue_free()
 	CardEvent.emit_signal("record", "%s rolled %s on the dice" % [player.nick, number_of_tiles])
 	for i in number_of_tiles:
 		CardEvent.emit_signal(

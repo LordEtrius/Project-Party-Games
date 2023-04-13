@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://26fw4cmb7jkq"]
+
+[ext_resource type="Script" path="res://maps/board/cards/instances/dice/action/dice_roll.gd" id="1_hpi7g"]
+[ext_resource type="Texture2D" uid="uid://b32j74v0p4bqv" path="res://assets/dice/DiceSprSheetX64.png" id="2_xyfcx"]
+
+[node name="DiceRoll" type="Node2D"]
+script = ExtResource("1_hpi7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xyfcx")
+hframes = 6
