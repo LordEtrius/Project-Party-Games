@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b237prftfc34f"
-path="res://.godot/imported/Jelly_FishingRod_Idle.png-9ac2673ef0976a3216a27aa5123530c9.ctex"
+uid="uid://dt45o32kmps87"
+path="res://.godot/imported/frozen-throne.png-812bfb94c67f624a41583ecbd1194a72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ice area/Props/Jelly_FishingRod_Idle.png"
-dest_files=["res://.godot/imported/Jelly_FishingRod_Idle.png-9ac2673ef0976a3216a27aa5123530c9.ctex"]
+source_file="res://assets/ice_area/frozen-throne.png"
+dest_files=["res://.godot/imported/frozen-throne.png-812bfb94c67f624a41583ecbd1194a72.ctex"]
 
 [params]
 

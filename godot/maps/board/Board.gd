@@ -14,7 +14,7 @@ class_name Board
 @onready var PlanningUI := $UI/Screen/Phases/Planning
 @onready var PlayUI := $UI/Screen/Phases/Play
 @onready var _discard_ui := $UI/Screen/Phases/DiscardUI
-@onready var graph := $Graph
+@onready var graph := $Map/Graph
 @onready var players := _get_players()
 
 var state = {"actual_player": null}
@@ -28,7 +28,7 @@ func _get_players() -> Array[BoardPlayer]:
 
 
 func setup_game(players: Array[BoardPlayer]) -> void:
-	var start_tile = $Graph/Tiles/Start as Tile
+	var start_tile = $Map/Graph/Tiles/Start as Tile
 
 	var i := 0
 	for player in players:

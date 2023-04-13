@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt45o32kmps87"
-path="res://.godot/imported/frozen_throne.png-6b106962567f4d041b639ec33c04aa4a.ctex"
+uid="uid://b237prftfc34f"
+path="res://.godot/imported/fishing-rod-idle.png-0533c4d711208950d8d1c69f6a72ae35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/frozen_throne.png"
-dest_files=["res://.godot/imported/frozen_throne.png-6b106962567f4d041b639ec33c04aa4a.ctex"]
+source_file="res://assets/ice_area/fishing-rod-idle.png"
+dest_files=["res://.godot/imported/fishing-rod-idle.png-0533c4d711208950d8d1c69f6a72ae35.ctex"]
 
 [params]
 
