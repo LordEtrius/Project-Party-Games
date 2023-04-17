@@ -3,7 +3,6 @@ class_name SubPoint
 
 
 func _init():
-	card_type = CARD_TYPE.NORMAL
 	title = "SubPoints"
 	description = "Give sub points"
 
