@@ -1,10 +1,10 @@
 extends Node
 
 var _chances_base := {
-	basic = 70,
-	rare = 90,
-	broken = 95,
-	legendary = 100
+	basic = 60,
+	rare = 80,
+	broken = 90,
+	legendary = 99
 }
 
 var cards = {
@@ -16,8 +16,8 @@ var cards = {
 #	},
 	any = {
 		basic = [Dice],
-		rare = [Teleport, SubPoint, Damage, Burner],
-		broken = [WhereAmI, Suicide],
+		rare = [Teleport, SubPoint, Burner, CloseAttack, RangedAttack],
+		broken = [WhereAmI, Suicide, BloodForBlood],
 		legendary = [TeleportToTile, Swap],
 	}
 }
@@ -27,8 +27,8 @@ func get_random_card(pools := [] as Array[String], chances := _chances_base):
 	var chance := randi() % 100
 	for arity in chances.keys():
 		if chance < chances[arity]:
-			var cards = _filter_cards_by_arity(pools, arity) as Array[Card]
-			var card_type = Util.array_get_random(cards)
+			var filtered_cards = _filter_cards_by_arity(pools, arity) as Array[Card]
+			var card_type = Util.array_get_random(filtered_cards)
 			return card_type.new() as Card
 
 
