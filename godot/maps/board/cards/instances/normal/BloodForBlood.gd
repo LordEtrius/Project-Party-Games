@@ -39,8 +39,8 @@ func effect(_board: Board, player: BoardPlayer) -> void:
 	) as BoardPlayer
 
 	# Apply damage to closest player
-	closest_player.hp -= DAMAGE_OTHER
+	closest_player.suffer_damage(DAMAGE_OTHER, player)
 	# Apply damage to player
-	player.hp -= DAMAGE_SELF
+	player.suffer_damage(DAMAGE_SELF)
 	# Transitions back to the player
 	await TransitionEvent.transition_to(player)

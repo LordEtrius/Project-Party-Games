@@ -3,6 +3,7 @@ class_name Board
 
 @export_group("Game")
 @export var max_round: int = 12
+@export var max_cards: int = 5
 
 @export_group("Discard")
 @export var max_cards_per_round: int = 5
@@ -37,7 +38,6 @@ func setup_game(players: Array[BoardPlayer]) -> void:
 		var placeholder = ScoreUI.get_child(i) as Control
 		placeholder.add_child(score_player_ui)
 		i += 1
-#		score_player_ui.connect()
 
 	for player in players:
 		player.actual_tile = start_tile
@@ -51,27 +51,25 @@ func transition_to_pre_turn(player: BoardPlayer) -> void:
 
 
 func pre_turn(player: BoardPlayer) -> void:
-	give_player_random_card(player)
-	give_player_random_card(player)
-	give_player_random_card(player)
-	give_player_random_card(player)
-	give_player_random_card(player)
-	give_player_random_card(player)
-	give_player_random_card(player)
-	give_player_random_card(player)
-	give_player_random_card(player)
+	# Apply positive energy
+	var positive_energy = player.score.positive_energy
+	for i in positive_energy:
+		player.cards.apply_positive_energy()
+	player.score.positive_energy = 2 # TODO: REMOVE THIS '2', ONLY USED FOR TESTING
+
+	# Apply negative energy
+	var negative_energy = player.score.negative_energy
+	for i in negative_energy:
+		player.cards.apply_negative_energy()
+	player.score.negative_energy = 0
+
 	await player.play_pre_turn(self)
 	await planning_phase(player)
 	pass
 
 
-func give_player_random_card(player: BoardPlayer) -> void:
-	var random_card = CardsCollection.get_random_card()
-	player.deck.add_card_to_deck(random_card)
-
-
 func planning_phase(player: BoardPlayer) -> void:
-	PlanningUI.deck = player.deck
+	PlanningUI.deck = player.cards
 	PlanningUI.show()
 	await PlanningUI.pressed_play
 	PlanningUI.hide()
@@ -80,12 +78,12 @@ func planning_phase(player: BoardPlayer) -> void:
 
 func turn(player: BoardPlayer) -> void:
 	PlayUI.show()
-	PlayUI.deck = player.deck
+	PlayUI.deck = player.cards
 	await player.play_turn(self)
 	PlayUI.hide()
 
 
-func transition_to_turn(player: BoardPlayer) -> void:
+func transition_to_turn(_player: BoardPlayer) -> void:
 	await Title.play_title("Playing turn")
 
 
@@ -94,7 +92,7 @@ func post_turn(player: BoardPlayer) -> void:
 
 
 func discard_phase(player: BoardPlayer) -> void:
-	if player.deck.deck.size() > max_cards_per_round:
+	if player.cards.deck.size() > max_cards_per_round:
 		_discard_ui.player = player
 		_discard_ui.max_cards = max_cards_per_round
 		_discard_ui.points_gained_per_discard = points_gained_per_discard

@@ -8,7 +8,7 @@ signal changed_hp
 @export var speed := 200
 
 var actual_tile: Tile = null : set = set_actual_tile
-var deck := Deck.new()
+var cards := PlayerCards.new()
 var score := Score.new()
 var max_hp := 30
 var hp := max_hp : set = set_hp
@@ -85,13 +85,24 @@ func play_pre_turn(board: Board) -> void:
 	await self.actual_tile.play_pre_turn_effect(board, self)
 
 
+func add_kill() -> void:
+	self.score.kills += 1
+	self.score.positive_energy += 5
+
+
+func suffer_damage(damage: int, from: BoardPlayer = null) -> void:
+	self.hp -= damage
+	if self.hp <= 0 and from != null:
+		from.add_kill()
+
+
 func play_turn(board: Board) -> void:
-	for card in deck.get_hand():
+	for card in cards.get_hand():
 		if self.dead:
 			break
 		await self.do_action
 		await card.play_effect(board, self)
-	deck.reset_hand()
+	cards.reset_hand()
 
 
 func die() -> void:

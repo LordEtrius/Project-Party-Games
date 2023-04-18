@@ -17,10 +17,8 @@ var cards = {
 			Rarity.COMMON: [Dice],
 		},
 		Type.OFFENSE: {
-			Rarity.BROKEN: [BloodForBlood],
-			Rarity.COMMON: [CloseAttack],
-			Rarity.RARE: [RangedAttack],
-			Rarity.LEGENDARY: [Burner],
+			Rarity.COMMON: [CloseAttack, RangedAttack],
+			Rarity.RARE: [BloodForBlood, Burner],
 		},
 		Type.GREED: {
 			Rarity.COMMON: [SubPoint],
@@ -31,8 +29,8 @@ var cards = {
 		Type.TELEPORTATION: {
 			Rarity.BROKEN: [WhereAmI],
 			Rarity.COMMON: [Teleport],
-			Rarity.RARE: [Teleport],
-			Rarity.LEGENDARY: [TeleportToTile, Swap],
+			Rarity.RARE: [Swap],
+			Rarity.LEGENDARY: [TeleportToTile],
 		}
 	},
 	# Pool.WATER: {
@@ -65,8 +63,7 @@ func get_random_card(chances := chances_base, pools := [] as Array[Pool]):
 	
 	# Creates the card, set its categories attributes and returns it
 	var card_script = type[choosed_rarity].pick_random()
-	var card = card_script.new() as Card
-	card.set_categories(choosed_pool, choosed_type, choosed_rarity)
+	var card = _create_card(card_script, choosed_pool, choosed_type, choosed_rarity)
 	return card
 
 
@@ -78,13 +75,9 @@ func upgrade_card(card: Card) -> Card:
 	# Get the next rarity
 	var new_rarity = _get_next_rarity(card)
 
-	# Destroy the old card
-	card.queue_free()
-
 	# Creates the card, set its categories attributes and returns it
 	var new_card_script = type[new_rarity].pick_random()
-	var new_card = new_card_script.new() as Card
-	new_card.set_categories(card.pool, card.type, new_rarity)
+	var new_card = _create_card(new_card_script, card.pool, card.type, new_rarity)
 	return new_card
 
 
@@ -101,8 +94,7 @@ func downgrade_card(card: Card) -> Card:
 
 	# Creates the card, set its categories attributes and returns it
 	var new_card_script = type[new_rarity].pick_random()
-	var new_card = new_card_script.new() as Card
-	new_card.set_categories(card.pool, card.type, new_rarity)
+	var new_card = _create_card(new_card_script, card.pool, card.type, new_rarity)
 	return new_card
 
 
@@ -116,12 +108,12 @@ func get_possible_upgrades(card: Card) -> Array[Card]:
 	var possible_upgrades = type[next_rarity]
 	var upgrades = []
 	for upgrade in possible_upgrades:
-		var new_card = upgrade.new() as Card
-		new_card.set_categories(card.pool, card.type, next_rarity)
+		var new_card = _create_card(upgrade, card.pool, card.type, next_rarity)
 		upgrades.append(new_card)
 	return upgrades
 
 
+## Get the next rarity of a card
 func _get_next_rarity(card: Card) -> Rarity:
 	var rarity_options = cards[card.pool][card.type].keys()
 	var rarity_index = rarity_options.find(card.rarity)
@@ -129,8 +121,24 @@ func _get_next_rarity(card: Card) -> Rarity:
 	return rarity_options[next_rarity]
 
 
+## Get the previous rarity of a card
 func _get_previous_rarity(card: Card) -> Rarity:
 	var rarity_options = cards[card.pool][card.type].keys()
 	var rarity_index = rarity_options.find(card.rarity)
 	var previous_rarity = max(rarity_index - 1, 0)
 	return rarity_options[previous_rarity]
+
+
+## Creates the card and set its categories attributes
+func _create_card(card: GDScript, pool: Pool, type: Type, rarity: Rarity) -> Card:
+	var new_card = card.new() as Card
+	new_card.set_categories(pool, type, rarity)
+
+	# If the card has rarity equal to max
+	var max_rarity = cards[pool][type].keys().size() - 1
+	if rarity == max_rarity:
+		new_card.is_max_rarity = true
+	# If the card has rarity equal to min
+	if rarity == 0:
+		new_card.is_min_rarity = true
+	return new_card

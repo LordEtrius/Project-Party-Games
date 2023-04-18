@@ -36,7 +36,7 @@ func effect(_board: Board, player: BoardPlayer) -> void:
 	) as BoardPlayer
 
 	# Burn all cards
-	closest_player.hp -= 5 * player.deck.deck.size()
+	closest_player.suffer_damage(5 * player.cards.deck.size(), player)
 
 	# Clear the deck
-	player.deck.deck.clear()
+	player.cards.deck.clear()

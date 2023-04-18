@@ -13,14 +13,14 @@ var points_gained_per_discard: int = 1
 func set_player(new_player: BoardPlayer) -> void:
 	_cards.reset()
 	if new_player != null:
-		var new_deck := new_player.deck
-		new_deck.connect("removed_from_deck",Callable(self,"_on_removed_from_deck"))
+		var player_cards := new_player.cards
+		player_cards.connect("removed_from_deck",Callable(self,"_on_removed_from_deck"))
 		if _discard_label != null:
-			_discard_label.text = "Please discard %s card(s)" % str(new_deck.deck.size() - 5)
+			_discard_label.text = "Please discard %s card(s)" % str(player_cards.deck.size() - 5)
 		if _cards != null:
-			_cards.add_cards_to_ui(new_deck.deck)
+			_cards.add_cards_to_ui(player_cards.deck)
 	if player != null:
-		var old_deck := player.deck
+		var old_deck := player.cards
 		old_deck.disconnect("removed_from_deck",Callable(self,"_on_removed_from_deck"))
 	player = new_player
 
@@ -31,15 +31,15 @@ func _ready():
 
 
 func _on_Garbage_discarded(card):
-	player.deck.remove_card(card)
+	player.cards.remove_from_deck(card)
 
 
 func _on_removed_from_deck(_card: Card, idx: int):
 	player.score.sub_points += points_gained_per_discard
-	var deck := player.deck
+	var player_cards := player.cards
 	_cards.remove_card(idx)
-	if deck.deck.size() <= max_cards:
+	if player_cards.deck.size() <= max_cards:
 		_cards.disable_drag()
 	await _garbage.animate()
-	if deck.deck.size() <= max_cards:
+	if player_cards.deck.size() <= max_cards:
 		emit_signal("discarded")

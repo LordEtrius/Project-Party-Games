@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://4wxhuqwf3kjx"]
+[gd_scene load_steps=92 format=3 uid="uid://4wxhuqwf3kjx"]
 
 [ext_resource type="Script" path="res://maps/board/Board.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dgdrejtl43pxo" path="res://maps/board/tile/instances/pink/PinkTile.tscn" id="2"]
@@ -40,6 +40,8 @@
 [ext_resource type="PackedScene" uid="uid://xn50hhhm836u" path="res://maps/board/tile/instances/green/GreenTile.tscn" id="31_340a8"]
 [ext_resource type="PackedScene" uid="uid://cjdydmyrce4kl" path="res://maps/board/tile/instances/ownership/Ownership.tscn" id="34_822w5"]
 [ext_resource type="PackedScene" uid="uid://ca1t1qqkyjqkd" path="res://maps/board/tile/instances/special/Special.tscn" id="35_kghgx"]
+[ext_resource type="PackedScene" uid="uid://o8a5781j3yqu" path="res://maps/board/tile/instances/positive_energy/PositiveEnergy.tscn" id="37_7t7wn"]
+[ext_resource type="PackedScene" uid="uid://ct4bolv72nmt2" path="res://maps/board/tile/instances/negative_energy/NegativeEnergy.tscn" id="38_624u1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uqfh3"]
 resource_name = "Road"
@@ -602,12 +604,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_ra1jt"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 459, 207, 0, 0, 0, 0, 376, 246, 0, 0, 0, 0, 502, 312, 0, 0, 0, 0, 470, 329)
-}
-point_count = 4
-
 [sub_resource type="Curve2D" id="Curve2D_byna4"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 470, 329, 0, 0, 0, 0, 365, 380)
@@ -617,12 +613,6 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_xbwd7"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 365, 380, 0, 0, 0, 0, 283, 423)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_daq6j"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 398, 481, 0, 0, 0, 0, 451, 510)
 }
 point_count = 2
 
@@ -692,12 +682,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_ye4kx"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 870, 444, 0, 0, 0, 0, 744, 380)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_qrw55"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 744, 380, 0, 0, 0, 0, 643, 329)
@@ -728,12 +712,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_jlhol"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 351, 458, 0, 0, 0, 0, 398, 481)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_mp63n"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 428.353, 625.679, 0, 0, 0, 0, 479.641, 647.413)
@@ -761,6 +739,42 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_ljk3s"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 262, 500, 0, 0, 0, 0, 332, 573)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_5u8h0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 351, 458, 0, 0, 0, 0, 398, 481)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_hcs5k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 459, 207, 0, 0, 0, 0, 377, 247, 0, 0, 0, 0, 433, 276)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ybgod"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 433, 276, 0, 0, 0, 0, 505, 312, 0, 0, 0, 0, 470, 329)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_cgnlh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 870, 444, 0, 0, 0, 0, 807, 412)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_lvhni"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 807, 412, 0, 0, 0, 0, 744, 380)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_3nktx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 398, 481, 0, 0, 0, 0, 451, 510)
 }
 point_count = 2
 
@@ -925,17 +939,11 @@ script = ExtResource("23")
 [node name="Start-IceArea_Tile00" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_h7n8h")
 
-[node name="IceArea_Tile00-IceArea_Tile01" parent="Map/Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("Curve2D_ra1jt")
-
 [node name="IceArea_Tile01-IceArea_Tile11" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_byna4")
 
 [node name="IceArea_Tile11-IceArea_Tile12" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_xbwd7")
-
-[node name="IceArea_Tile21-IceArea_Tile02" parent="Map/Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("Curve2D_daq6j")
 
 [node name="IceArea_Tile02-IceArea_Tile18" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_35mhu")
@@ -970,9 +978,6 @@ curve = SubResource("Curve2D_yvqnj")
 [node name="IceArea_Tile16-IceArea_Tile10" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_kkwn2")
 
-[node name="IceArea_Tile10-IceArea_Tile05" parent="Map/Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("Curve2D_ye4kx")
-
 [node name="IceArea_Tile05-IceArea_Tile19" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_qrw55")
 
@@ -987,9 +992,6 @@ curve = SubResource("Curve2D_7rdpc")
 
 [node name="IceArea_Tile12-IceArea_Tile24" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_n2pim")
-
-[node name="IceArea_Tile24-IceArea_Tile21" parent="Map/Graph/Paths" instance=ExtResource("25")]
-curve = SubResource("Curve2D_jlhol")
 
 [node name="IceArea_Tile20-IceArea_Tile25" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_mp63n")
@@ -1006,6 +1008,24 @@ curve = SubResource("Curve2D_8yffo")
 [node name="IceArea_Tile03-IceArea_Tile04" parent="Map/Graph/Paths" instance=ExtResource("25")]
 curve = SubResource("Curve2D_ljk3s")
 
+[node name="IceArea_Tile24-IceArea_Tile21" parent="Map/Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_5u8h0")
+
+[node name="IceArea_Tile00-IceArea_Tile27" parent="Map/Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_hcs5k")
+
+[node name="IceArea_Tile27-IceArea_Tile01" parent="Map/Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_ybgod")
+
+[node name="IceArea_Tile10-IceArea_Tile28" parent="Map/Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_cgnlh")
+
+[node name="IceArea_Tile28-IceArea_Tile05" parent="Map/Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_lvhni")
+
+[node name="IceArea_Tile21-IceArea_Tile02" parent="Map/Graph/Paths" instance=ExtResource("25")]
+curve = SubResource("Curve2D_3nktx")
+
 [node name="Tiles" type="Node2D" parent="Map/Graph"]
 script = ExtResource("5")
 
@@ -1016,7 +1036,7 @@ teleportable = false
 
 [node name="IceArea_Tile00" parent="Map/Graph/Tiles" instance=ExtResource("14")]
 position = Vector2(459, 207)
-next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile01")])
+next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile27")])
 
 [node name="IceArea_Tile01" parent="Map/Graph/Tiles" instance=ExtResource("15")]
 position = Vector2(470, 329)
@@ -1075,7 +1095,7 @@ next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile13")])
 
 [node name="IceArea_Tile10" parent="Map/Graph/Tiles" instance=ExtResource("15")]
 position = Vector2(870, 444)
-next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile05")])
+next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile28")])
 
 [node name="IceArea_Tile11" parent="Map/Graph/Tiles" instance=ExtResource("16")]
 position = Vector2(365, 380)
@@ -1117,7 +1137,7 @@ next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile00")])
 position = Vector2(428.353, 625.679)
 next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile25")])
 
-[node name="IceArea_Tile21" parent="Map/Graph/Tiles" instance=ExtResource("14")]
+[node name="IceArea_Tile21" parent="Map/Graph/Tiles" instance=ExtResource("37_7t7wn")]
 position = Vector2(398, 481)
 next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile02")])
 
@@ -1142,6 +1162,14 @@ next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile09")])
 [node name="IceArea_Tile26" parent="Map/Graph/Tiles" instance=ExtResource("35_kghgx")]
 position = Vector2(783, 560)
 next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile07")])
+
+[node name="IceArea_Tile27" parent="Map/Graph/Tiles" instance=ExtResource("37_7t7wn")]
+position = Vector2(433, 276)
+next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile01")])
+
+[node name="IceArea_Tile28" parent="Map/Graph/Tiles" instance=ExtResource("38_624u1")]
+position = Vector2(807, 412)
+next_tiles_path = Array[NodePath]([NodePath("../IceArea_Tile05")])
 
 [node name="Decoration" type="Node2D" parent="Map"]
 y_sort_enabled = true

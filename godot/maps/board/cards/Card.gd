@@ -7,6 +7,8 @@ signal played_effect
 var type: CardsCollection.Type = CardsCollection.Type.MOVEMENT
 var pool: CardsCollection.Pool = CardsCollection.Pool.ANY
 var rarity: CardsCollection.Rarity = CardsCollection.Rarity.COMMON
+var is_max_rarity: bool = false
+var is_min_rarity: bool = false
 
 var title: String = ""
 var description: String = ""

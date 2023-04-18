@@ -138,4 +138,4 @@ func _animate_restore():
 func _update_tweener():
 	if _tweener != null and _tweener.is_running():
 		_tweener.kill()
-	_tweener = create_tween()
+	_tweener = get_tree().create_tween()
