@@ -11,7 +11,7 @@ var _ownership_options = [
 		"action": 
 			func (next_player):
 				var old_next_player_hp = next_player.hp
-				next_player.hp -= ceili(next_player.hp * 0.25)
+				next_player.suffer_damage(ceili(next_player.hp * 0.25), _owner_player)
 				_owner_player.hp += old_next_player_hp - next_player.hp,
 	},
 	{

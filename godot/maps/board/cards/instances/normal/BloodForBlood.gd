@@ -1,14 +1,17 @@
-class_name Burner
+class_name BloodForBlood
 extends Card
 
 const SELECTOR := preload(
 	"res://maps/board/selectors/area_selector/circle/CircleSelector.tscn"
 )
-const RADIUS = 100
+
+const RADIUS := 130
+const DAMAGE_OTHER := 16
+const DAMAGE_SELF := 8
 
 func _init():
-	title = "Burner"
-	description = "Burns all your cards and deals 5 damage for each card burned to the closest player in the area"
+	title = "Blood for Blood"
+	description = "Damages the closest enemy by 16 health points and damages you 8"
 
 
 func effect(_board: Board, player: BoardPlayer) -> void:
@@ -35,8 +38,9 @@ func effect(_board: Board, player: BoardPlayer) -> void:
 				return b
 	) as BoardPlayer
 
-	# Burn all cards
-	closest_player.suffer_damage(5 * player.cards.deck.size(), player)
-
-	# Clear the deck
-	player.cards.deck.clear()
+	# Apply damage to closest player
+	closest_player.suffer_damage(DAMAGE_OTHER, player)
+	# Apply damage to player
+	player.suffer_damage(DAMAGE_SELF)
+	# Transitions back to the player
+	await TransitionEvent.transition_to(player)

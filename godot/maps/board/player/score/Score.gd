@@ -6,7 +6,12 @@ signal scored_sub_points(sub_points)
 
 var points := 0 : set = set_points
 var sub_points := 0 : set = set_sub_points
+
+var positive_energy := 5
+var negative_energy := 0
+
 var minigames_won := 0
+var kills := 0
 
 
 func set_points(new_points: int):

@@ -1,26 +1,35 @@
-extends Node2D
-
 class_name Card
+extends Node
 
 signal will_play_effect
 signal played_effect
 
-enum CARD_TYPE { DICE, NORMAL, RARE }
+var type: CardsCollection.Type = CardsCollection.Type.MOVEMENT
+var pool: CardsCollection.Pool = CardsCollection.Pool.ANY
+var rarity: CardsCollection.Rarity = CardsCollection.Rarity.COMMON
+var is_max_rarity: bool = false
+var is_min_rarity: bool = false
 
-@export var card_type: CARD_TYPE = CARD_TYPE.DICE
-@export var title: String = ""
-@export var description: String = ""
+var title: String = ""
+var description: String = ""
+
+## This function must be called before the card is used
+## to set the card's categories
+func set_categories(_pool: CardsCollection.Pool, _type: CardsCollection.Type, _rarity: CardsCollection.Rarity):
+	pool = _pool
+	type = _type
+	rarity = _rarity
 
 
 func _to_string() -> String:
 	return self.title
 
 
-func record(board: Board, player: BoardPlayer):
+func record(_board: Board, player: BoardPlayer):
 	return "%s played %s" % [player.nick, title]
 
 
-func effect(board: Board, player: BoardPlayer) -> void:
+func effect(_board: Board, _player: BoardPlayer) -> void:
 	pass
 
 
